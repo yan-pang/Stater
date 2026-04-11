@@ -39,7 +39,7 @@ src/
 1. Replace the generic sample pages in `src/views/`
 2. Adjust theme tokens in `src/App.tsx` and `src/styles/global.scss`
 3. Replace mock services with project-specific mock or real APIs
-4. Add project-specific specs under `specs/`
+4. Add project-specific specs under `specs/` with `npm run new:spec -- <feature-name>`
 5. Extend `.claude/skills/` only if the default six workflows stop being enough
 
 ## What Not To Do

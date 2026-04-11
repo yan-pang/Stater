@@ -54,6 +54,16 @@ npm run dev
 
 The sample app runs on `http://127.0.0.1:1219`.
 
+## Bootstrap A New Spec
+
+```bash
+npm run new:spec -- my-feature
+npm run new:spec -- billing-revamp --type revamp
+npm run new:spec -- reporting-center --delivery
+```
+
+This command creates starter-ready files in `research/` and `specs/`, and can optionally create delivery stubs.
+
 ## Reuse Flow
 
 1. Start discovery in `research/` if the request is still fuzzy.
@@ -93,3 +103,7 @@ npm run check
 ```
 
 `npm run check` is the default local pre-push verification command.
+
+## Contributing
+
+See [`CONTRIBUTING.md`](/Users/centurygame/Desktop/VIP-Starter/CONTRIBUTING.md) for branch rules, review expectations, and starter-specific guardrails.

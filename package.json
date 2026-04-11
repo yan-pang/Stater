@@ -8,6 +8,7 @@
     "build": "tsc -b && vite build",
     "lint": "eslint .",
     "check": "npm run lint && npm run build",
+    "new:spec": "node ./scripts/new-spec.mjs",
     "preview": "vite preview"
   },
   "dependencies": {

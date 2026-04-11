@@ -23,6 +23,19 @@ This starter uses a compact document-driven workflow. The goal is to keep one st
 6. `status`
    Summarize current progress and recommend the next concrete action.
 
+## Bootstrap Helper
+
+Use the local scaffold command when starting a fresh topic:
+
+```bash
+npm run new:spec -- <feature-name>
+```
+
+Optional flags:
+
+- `--type revamp`
+- `--delivery`
+
 ## Directory Contract
 
 - `research/`: raw notes, meeting output, discovery materials
