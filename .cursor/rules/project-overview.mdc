@@ -1,0 +1,17 @@
+---
+description: Thin compatibility note for Cursor
+alwaysApply: true
+---
+
+# VIP Starter
+
+This repo is a generic starter, not the Support business project.
+
+Primary sources of truth:
+
+- `docs/workflow.md`
+- `docs/ai-collaboration.md`
+- `docs/starter-architecture.md`
+- `templates/`
+
+Do not recreate a second full workflow definition inside `.cursor/rules/`.
