@@ -2,6 +2,12 @@
 
 This starter uses a compact document-driven workflow. The goal is to keep one stable path that works in Claude, Codex, and Cursor without maintaining three different process documents.
 
+## Entry Order
+
+- Human entry: `README.md` -> `docs/workflow.md` -> `examples/minimal/`
+- AI entry: `.claude/skills/*` -> `docs/workflow.md` -> the target file in `research/`, `specs/`, or `delivery/`
+- Cursor is compatibility-only and should not define a separate process
+
 ## Default Flow
 
 1. `breakdown`

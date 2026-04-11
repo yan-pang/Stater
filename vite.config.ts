@@ -9,4 +9,7 @@ export default defineConfig({
     port: 1219,
     strictPort: false,
   },
+  build: {
+    chunkSizeWarningLimit: 900,
+  },
 })

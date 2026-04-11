@@ -70,13 +70,26 @@ The sample app runs on `http://127.0.0.1:1219`.
 
 See [`docs/ai-collaboration.md`](/Users/centurygame/Desktop/VIP-Starter/docs/ai-collaboration.md) for the operating model.
 
-## Creating The Real Starter Remote
+## Recommended Entry Path
 
-This local repo is initialized independently from `Support`. After you create the remote repository, link it with:
+For humans:
+
+1. Read `README.md`
+2. Read [`docs/workflow.md`](/Users/centurygame/Desktop/VIP-Starter/docs/workflow.md)
+3. Open the sample in [`examples/minimal/README.md`](/Users/centurygame/Desktop/VIP-Starter/examples/minimal/README.md)
+
+For AI assistants:
+
+1. Enter through `.claude/skills/`
+2. Resolve behavior from `docs/workflow.md`
+3. Only fall back to `.cursor/rules/` for compatibility
+
+## Quality Gates
 
 ```bash
-git remote add origin <your-starter-repo-url>
-git add .
-git commit -m "chore: initialize VIP Starter baseline"
-git push -u origin main
+npm run lint
+npm run build
+npm run check
 ```
+
+`npm run check` is the default local pre-push verification command.
