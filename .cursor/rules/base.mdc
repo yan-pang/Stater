@@ -1,0 +1,30 @@
+---
+description: VIP Starter 最小兼容规则
+alwaysApply: true
+---
+
+# VIP Starter 基础规则
+
+优先读取的 canonical docs：
+
+- `product-design-kit/guide/agent-usage.md`
+- `product-design-kit/guide/large-projects.md`
+- `product-design-kit/design/design-init.md`
+- `product-design-kit/design/product-design.md`
+- `project/ui-brand.md`
+- `project/overview.md`
+
+工作边界：
+
+- 规范只从 `product-design-kit/` 读取
+- 项目状态与领域文档只写到 `project/`
+- 代码只写到 `src/`
+- 默认围绕单个领域推进
+- 不要重新引入并行的旧流程目录
+
+实现时优先参考：
+
+- `product-design-kit/guide/repo-structure.md`
+- 列表页优先参考 `product-design-kit/coding/react-list-page.md`
+- 标签页或子页容器优先参考 `product-design-kit/coding/react-tabs-page.md`
+- 文档与代码一致性优先参考 `product-design-kit/coding/consistency.md`

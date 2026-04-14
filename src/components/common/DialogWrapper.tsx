@@ -19,8 +19,8 @@ function DialogWrapper({
   visible,
   onVisibleChange,
   children,
-  confirmText = 'Save',
-  cancelText = 'Cancel',
+  confirmText = '保存',
+  cancelText = '取消',
   loading = false,
   onConfirm,
   onCancel,
@@ -28,7 +28,7 @@ function DialogWrapper({
   className = '',
   footer,
   style,
-  title = 'Dialog',
+  title = '弹窗',
   width = 680,
   ...restProps
 }: DialogWrapperProps) {

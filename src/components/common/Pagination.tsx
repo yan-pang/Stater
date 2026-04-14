@@ -18,7 +18,7 @@ function Pagination({ current, total, pageSize, pageSizes = [10, 20, 50, 100], o
         pageSizeOptions={pageSizes.map((size) => size.toString())}
         showQuickJumper
         showSizeChanger
-        showTotal={(all, range) => `Total ${all}, showing ${range[0]}-${range[1]}`}
+        showTotal={(all, range) => `共 ${all} 条，当前显示 ${range[0]}-${range[1]} 条`}
         total={total}
         onChange={onChange}
         onShowSizeChange={onChange}

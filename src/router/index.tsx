@@ -3,7 +3,6 @@ import { createHashRouter, Navigate } from 'react-router-dom'
 
 const NavigationLayout = lazy(() => import('../components/layouts/NavigationLayout'))
 const ProjectCatalogPage = lazy(() => import('../views/catalog/ProjectCatalogPage'))
-const WorkflowGuidePage = lazy(() => import('../views/catalog/WorkflowGuidePage'))
 
 const router = createHashRouter([
   {
@@ -17,10 +16,6 @@ const router = createHashRouter([
       {
         path: 'catalog',
         element: <ProjectCatalogPage />,
-      },
-      {
-        path: 'workflow',
-        element: <WorkflowGuidePage />,
       },
     ],
   },

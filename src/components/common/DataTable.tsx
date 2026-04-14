@@ -75,7 +75,7 @@ function DataTable<Row extends object>({
   if (showAction && actions.length > 0) {
     mergedColumns.push({
       key: '__action__',
-      title: 'Action',
+      title: '操作',
       width: actionWidth,
       render: (_value: unknown, record: Row) => {
         const resolvedActions = actions.map((action) => ({

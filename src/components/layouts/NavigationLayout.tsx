@@ -1,4 +1,4 @@
-import { AppstoreOutlined, FileTextOutlined } from '@ant-design/icons'
+import { AppstoreOutlined } from '@ant-design/icons'
 import type { ReactNode } from 'react'
 import { Outlet, useLocation, useNavigate } from 'react-router-dom'
 import '../../styles/NavigationLayout.scss'
@@ -12,16 +12,10 @@ interface MenuItem {
 
 const menuItems: MenuItem[] = [
   {
-    label: 'Project Catalog',
+    label: '项目目录',
     path: '/catalog',
     icon: <AppstoreOutlined />,
-    note: 'Sample list page',
-  },
-  {
-    label: 'Workflow Guide',
-    path: '/workflow',
-    icon: <FileTextOutlined />,
-    note: 'How this starter is used',
+    note: '通用列表示例页',
   },
 ]
 
@@ -33,18 +27,18 @@ function NavigationLayout() {
     <div className="starter-layout">
       <header className="starter-layout__header">
         <div>
-          <p className="starter-layout__eyebrow">Reusable prototype baseline</p>
+          <p className="starter-layout__eyebrow">可复用原型基线</p>
           <h1 className="starter-layout__brand">VIP Starter</h1>
         </div>
         <div className="starter-layout__meta">
-          <span>Main repo for shared workflow</span>
-          <span>Generic sample only</span>
+          <span>中文优先长期模板</span>
+          <span>默认直接对话触发 guide-agent</span>
         </div>
       </header>
 
       <div className="starter-layout__body">
         <aside className="starter-layout__sidebar">
-          <div className="starter-layout__sidebar-title">Sample Modules</div>
+          <div className="starter-layout__sidebar-title">示例页面</div>
           {menuItems.map((item) => {
             const active = location.pathname === item.path
 

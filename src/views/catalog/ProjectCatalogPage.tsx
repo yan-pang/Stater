@@ -22,15 +22,15 @@ interface SearchFilters {
 const PAGE_SIZE = 10
 
 const searchItems: SearchItem[] = [
-  { label: 'Keyword', prop: 'keyword', type: 'input', placeholder: 'Project name or domain' },
-  { label: 'Status', prop: 'status', type: 'select', options: projectStatusOptions },
-  { label: 'Owner', prop: 'owner', type: 'input', placeholder: 'Owner name' },
+  { label: '关键词', prop: 'keyword', type: 'input', placeholder: '项目名称或领域' },
+  { label: '状态', prop: 'status', type: 'select', options: projectStatusOptions },
+  { label: '负责人', prop: 'owner', type: 'input', placeholder: '负责人姓名' },
 ]
 
 const statusColors: Record<ProjectStatus, string> = {
-  Discovery: 'default',
-  'In Build': 'processing',
-  'Ready for Handoff': 'success',
+  需求梳理: 'default',
+  开发中: 'processing',
+  待交付: 'success',
 }
 
 function ProjectCatalogPage() {
@@ -63,18 +63,18 @@ function ProjectCatalogPage() {
   }, [filteredRecords, page, pageSize])
 
   const actionButtons: ActionButton<ProjectRecord>[] = [
-    { name: 'create', label: 'New Project', type: 'primary' },
+    { name: 'create', label: '新建项目', type: 'primary' },
   ]
 
   const tableActions: ActionButton<ProjectRecord>[] = [
-    { name: 'edit', label: 'Edit', type: 'link' },
-    { name: 'duplicate', label: 'Duplicate', type: 'link' },
+    { name: 'edit', label: '编辑', type: 'link' },
+    { name: 'duplicate', label: '复制', type: 'link' },
   ]
 
   const columns: TableColumn<ProjectRecord>[] = [
     {
       prop: 'name',
-      label: 'Project',
+      label: '项目',
       minWidth: 180,
       formatter: (record) => (
         <div className="catalog-project-cell">
@@ -83,15 +83,15 @@ function ProjectCatalogPage() {
         </div>
       ),
     },
-    { prop: 'owner', label: 'Owner', width: 120 },
+    { prop: 'owner', label: '负责人', width: 120 },
     {
       prop: 'status',
-      label: 'Status',
+      label: '状态',
       width: 180,
       formatter: (record) => <Tag color={statusColors[record.status]}>{record.status}</Tag>,
     },
-    { prop: 'modules', label: 'Modules', width: 100 },
-    { prop: 'updatedAt', label: 'Updated', width: 140 },
+    { prop: 'modules', label: '模块数', width: 100 },
+    { prop: 'updatedAt', label: '更新时间', width: 140 },
   ]
 
   const openCreateDialog = () => {
@@ -100,7 +100,7 @@ function ProjectCatalogPage() {
       domain: '',
       name: '',
       owner: '',
-      status: 'Discovery',
+      status: '需求梳理',
     })
     setDialogOpen(true)
   }
@@ -120,12 +120,12 @@ function ProjectCatalogPage() {
     const duplicatedRecord: ProjectRecord = {
       ...record,
       id: `starter-${Date.now()}`,
-      name: `${record.name} Copy`,
+      name: `${record.name} 副本`,
       updatedAt: new Date().toISOString().slice(0, 10),
     }
 
     setRecords((current) => [duplicatedRecord, ...current])
-    message.success('Project duplicated in local mock data')
+    message.success('已在本地 mock 数据中复制项目')
   }
 
   const handleSave = async () => {
@@ -143,7 +143,7 @@ function ProjectCatalogPage() {
             : record,
         ),
       )
-      message.success('Project updated')
+      message.success('项目已更新')
     } else {
       const newRecord: ProjectRecord = {
         id: `starter-${Date.now()}`,
@@ -152,7 +152,7 @@ function ProjectCatalogPage() {
         updatedAt: new Date().toISOString().slice(0, 10),
       }
       setRecords((current) => [newRecord, ...current])
-      message.success('Project created')
+      message.success('项目已创建')
     }
 
     setDialogOpen(false)
@@ -165,8 +165,7 @@ function ProjectCatalogPage() {
         current={page}
         description={
           <Typography.Paragraph>
-            This generic sample demonstrates the starter&apos;s default list-page shape: search, table,
-            pagination, and a modal create or edit flow.
+            这个页面只作为通用列表页业务示例，用来演示 starter 默认的搜索、表格、分页，以及新建 / 编辑弹窗组合。
           </Typography.Paragraph>
         }
         initialFormData={filters}
@@ -175,7 +174,7 @@ function ProjectCatalogPage() {
         tableActions={tableActions}
         tableColumns={columns}
         tableData={pageData}
-        title="Project Catalog"
+        title="项目目录"
         total={filteredRecords.length}
         onAction={(action) => {
           if (action === 'create') {
@@ -206,24 +205,24 @@ function ProjectCatalogPage() {
       />
 
       <DialogWrapper
-        confirmText={editingId ? 'Save changes' : 'Create project'}
-        title={editingId ? 'Edit Project' : 'New Project'}
+        confirmText={editingId ? '保存修改' : '创建项目'}
+        title={editingId ? '编辑项目' : '新建项目'}
         visible={dialogOpen}
         onConfirm={() => void handleSave()}
         onVisibleChange={setDialogOpen}
       >
         <Form form={form} layout="vertical">
-          <Form.Item label="Project name" name="name" rules={[{ required: true, message: 'Project name is required' }]}>
-            <Input placeholder="Enter project name" />
+          <Form.Item label="项目名称" name="name" rules={[{ required: true, message: '请输入项目名称' }]}>
+            <Input placeholder="请输入项目名称" />
           </Form.Item>
-          <Form.Item label="Domain" name="domain" rules={[{ required: true, message: 'Domain is required' }]}>
-            <Input placeholder="Enter project domain" />
+          <Form.Item label="所属领域" name="domain" rules={[{ required: true, message: '请输入所属领域' }]}>
+            <Input placeholder="请输入项目所属领域" />
           </Form.Item>
           <Space className="catalog-form-row" size={16}>
-            <Form.Item label="Owner" name="owner" rules={[{ required: true, message: 'Owner is required' }]}>
-              <Input placeholder="Owner name" />
+            <Form.Item label="负责人" name="owner" rules={[{ required: true, message: '请输入负责人姓名' }]}>
+              <Input placeholder="请输入负责人姓名" />
             </Form.Item>
-            <Form.Item label="Status" name="status" rules={[{ required: true, message: 'Status is required' }]}>
+            <Form.Item label="状态" name="status" rules={[{ required: true, message: '请选择状态' }]}>
               <Select options={projectStatusOptions} />
             </Form.Item>
           </Space>

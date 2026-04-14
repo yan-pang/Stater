@@ -4,6 +4,8 @@
       "Bash(npm run dev)",
       "Bash(npm run build)",
       "Bash(npm run lint)",
+      "Bash(npm run check)",
+      "Bash(npm run new:domain -- *)",
       "Bash(git status *)",
       "Bash(git branch *)",
       "Bash(git tag *)",

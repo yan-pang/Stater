@@ -8,12 +8,11 @@
     "build": "tsc -b && vite build",
     "lint": "eslint .",
     "check": "npm run lint && npm run build",
-    "new:spec": "node ./scripts/new-spec.mjs",
+    "new:domain": "node ./scripts/new-domain.mjs",
     "preview": "vite preview"
   },
   "dependencies": {
     "antd": "^5.26.4",
-    "axios": "^1.10.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^7.6.3",

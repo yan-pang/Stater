@@ -1,109 +1,84 @@
 # VIP Starter
 
-`VIP Starter` is a standalone React prototype starter for document-driven product work. It is intentionally separate from the long-lived `Support` business repo so the two projects can evolve independently.
+`VIP Starter` 是一个中文优先、文档驱动的前端原型长期模板。
 
-## What This Repo Is For
+## 这个项目怎么用
 
-- Bootstrapping a new internal tool or prototype project
-- Keeping a small reusable app shell and one generic sample module
-- Keeping AI workflow prompts, templates, and collaboration rules in one place
-- Serving as the source of truth for shared workflow updates before they are selectively copied into business repos
+1. 运行 `npm install`
+2. 运行 `npm run dev`
+3. 直接告诉 Claude 你要做什么，或说“继续 `<domain>`”
+4. 如果要新建领域，运行 `npm run new:domain -- <domain-name>`
+5. 如果一开始就确定要产出交付物，再加 `--delivery`
 
-## What This Repo Is Not
+`README.md` 是唯一的人类使用入口。  
+AI 的阶段编排、读取顺序和冲突裁决统一由 `.claude/agents/guide-agent.md` 负责，不再依赖其他说明文档。
 
-- It is not the `Support` product repository
-- It is not a long-lived business project
-- It should not accumulate product-specific PRDs, delivery documents, or domain terminology over time
-
-## Repository Layout
+## 项目固定分层
 
 ```text
-docs/                Core human-facing docs
-templates/           Reusable markdown templates and checklists
-examples/minimal/    One generic sample spec that matches the sample app
-specs/               Future internal feature specs
-research/            Future background notes and discovery material
-delivery/            Future external PRDs and test outputs
-.claude/skills/      Primary AI workflow entrypoints
-.cursor/rules/       Thin compatibility layer for Cursor
-src/                 Minimal React starter app
+product-design-kit/   规范库
+project/              项目状态与领域文档
+src/                  代码实现
 ```
 
-## Core Docs
+- `product-design-kit/`：AI 读取的规范库，回答“应该怎么做”
+- `project/`：项目状态与领域文档，回答“当前做到哪了”
+- `src/`：前端代码实现
+- `.claude/`：machine-only 总控与阶段 skills
+- `scripts/`：本地脚手架
 
-- [`docs/workflow.md`](/Users/centurygame/Desktop/VIP-Starter/docs/workflow.md)
-- [`docs/starter-architecture.md`](/Users/centurygame/Desktop/VIP-Starter/docs/starter-architecture.md)
-- [`docs/ai-collaboration.md`](/Users/centurygame/Desktop/VIP-Starter/docs/ai-collaboration.md)
-- [`docs/delivery-checklist.md`](/Users/centurygame/Desktop/VIP-Starter/docs/delivery-checklist.md)
+## 领域目录怎么放
 
-## Templates
-
-- [`templates/feature-init.md`](/Users/centurygame/Desktop/VIP-Starter/templates/feature-init.md)
-- [`templates/revamp-init.md`](/Users/centurygame/Desktop/VIP-Starter/templates/revamp-init.md)
-- [`templates/product-design.md`](/Users/centurygame/Desktop/VIP-Starter/templates/product-design.md)
-- [`templates/external-prd.md`](/Users/centurygame/Desktop/VIP-Starter/templates/external-prd.md)
-- [`templates/test-strategy.md`](/Users/centurygame/Desktop/VIP-Starter/templates/test-strategy.md)
-- [`templates/prd-checklist.md`](/Users/centurygame/Desktop/VIP-Starter/templates/prd-checklist.md)
-
-## Quick Start
-
-```bash
-npm install
-npm run dev
+```text
+project/
+  domains/
+    <domain>/
+      design.md
+      research.md
+      tech/
+      delivery/
+        prd.md
+        test-strategy.md
+        test-cases.md
 ```
 
-The sample app runs on `http://127.0.0.1:1219`.
+- `design.md`：给 AI / demo 实现看的业务与页面设计
+- `research.md`：前期规划、会议增量和交付参考工作台
+- `tech/`：人写的技术设计文档区，可放多份 `.md`
+- `delivery/`：正式交付物输出区
 
-## Bootstrap A New Spec
+固定边界：
 
-```bash
-npm run new:spec -- my-feature
-npm run new:spec -- billing-revamp --type revamp
-npm run new:spec -- reporting-center --delivery
-```
+- `design.md` 只保留会影响 AI / demo 实现的稳定设计结论
+- `tech/` 不默认同步进 `design.md`
+- 只有技术设计会改变页面、交互或 Mock 时，才需要回写 `design.md`
+- `delivery/` 默认综合参考 `research.md`、`tech/` 和 `design.md`
 
-This command creates starter-ready files in `research/` and `specs/`, and can optionally create delivery stubs.
+## 协作方式
 
-## Reuse Flow
+- 默认入口是直接对话，不需要自己判断当前该进哪个阶段
+- `/guide <domain>` 只保留为兼容快捷入口
+- 项目级视觉和品牌基线统一写在 `project/ui-brand.md`
+- 当前项目状态统一写在 `project/overview.md`
 
-1. Start discovery in `research/` if the request is still fuzzy.
-2. Create or update a spec in `specs/` with the templates in `templates/`.
-3. Build the feature in `src/` after the spec is decision-complete.
-4. Generate delivery docs into `delivery/` only when the project needs external handoff.
-5. Keep shared workflow improvements in this repo first, then copy small pieces into business repos when needed.
+## 真正需要知道的规范
 
-## AI Workflow
+- 项目级设计规范：`project/ui-brand.md`
+- 设计初始化规范：`product-design-kit/design/design-init.md`
+- 详细设计规范：`product-design-kit/design/product-design.md`
+- 对外交付规范：`product-design-kit/design/external-prd.md`、`product-design-kit/design/test-strategy.md`、`product-design-kit/design/test-cases.md`
+- 交付自查清单：`product-design-kit/tools/prd-checklist.md`
 
-- Primary entry: `.claude/skills/`
-- Compatibility layer: `.cursor/rules/`
-- Default collaboration model: one main assistant with optional specialist agents for design, build, or review
-
-See [`docs/ai-collaboration.md`](/Users/centurygame/Desktop/VIP-Starter/docs/ai-collaboration.md) for the operating model.
-
-## Recommended Entry Path
-
-For humans:
-
-1. Read `README.md`
-2. Read [`docs/workflow.md`](/Users/centurygame/Desktop/VIP-Starter/docs/workflow.md)
-3. Open the sample in [`examples/minimal/README.md`](/Users/centurygame/Desktop/VIP-Starter/examples/minimal/README.md)
-
-For AI assistants:
-
-1. Enter through `.claude/skills/`
-2. Resolve behavior from `docs/workflow.md`
-3. Only fall back to `.cursor/rules/` for compatibility
-
-## Quality Gates
+## 常用命令
 
 ```bash
-npm run lint
-npm run build
+npm run new:domain -- <domain-name> [--delivery]
 npm run check
 ```
 
-`npm run check` is the default local pre-push verification command.
+## 当前状态入口
 
-## Contributing
+- 项目总览：`project/overview.md`
+- 项目级视觉规范：`project/ui-brand.md`
 
-See [`CONTRIBUTING.md`](/Users/centurygame/Desktop/VIP-Starter/CONTRIBUTING.md) for branch rules, review expectations, and starter-specific guardrails.
+`/catalog` 只保留为通用列表页业务示例，用来演示 starter 当前的页面骨架，不再承担流程说明职责。

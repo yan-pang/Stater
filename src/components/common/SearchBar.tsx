@@ -61,22 +61,22 @@ function SearchBar({
     }
 
     return [
-      item.startPlaceholder || 'Start date',
-      item.endPlaceholder || 'End date',
+      item.startPlaceholder || '开始日期',
+      item.endPlaceholder || '结束日期',
     ] as [string, string]
   }
 
   const renderField = (item: SearchItem) => {
     switch (item.type) {
       case 'input':
-        return <Input allowClear placeholder={typeof item.placeholder === 'string' ? item.placeholder : `Search ${item.label}`} />
+        return <Input allowClear placeholder={typeof item.placeholder === 'string' ? item.placeholder : `请输入${item.label}`} />
       case 'select':
         return (
           <Select
             allowClear
             mode={item.selectMode}
             options={item.options}
-            placeholder={typeof item.placeholder === 'string' ? item.placeholder : `Select ${item.label}`}
+            placeholder={typeof item.placeholder === 'string' ? item.placeholder : `请选择${item.label}`}
           />
         )
       case 'date':
@@ -84,7 +84,7 @@ function SearchBar({
           <DatePicker
             allowClear
             format={item.format}
-            placeholder={typeof item.placeholder === 'string' ? item.placeholder : `Select ${item.label}`}
+            placeholder={typeof item.placeholder === 'string' ? item.placeholder : `请选择${item.label}`}
           />
         )
       case 'daterange':
@@ -111,7 +111,7 @@ function SearchBar({
         {showMore ? (
           <Form.Item>
             <Button type="link" onClick={() => setMoreOpen((open) => !open)}>
-              {moreOpen ? 'Collapse' : 'More'}
+              {moreOpen ? '收起' : '更多'}
               <DownOutlined
                 style={{
                   marginLeft: 2,
@@ -126,9 +126,9 @@ function SearchBar({
         <Form.Item>
           <Space>
             <Button htmlType="submit" type="primary">
-              Search
+              搜索
             </Button>
-            <Button onClick={handleReset}>Reset</Button>
+            <Button onClick={handleReset}>重置</Button>
           </Space>
         </Form.Item>
       </Form>
