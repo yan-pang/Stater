@@ -47,9 +47,24 @@ project/
 
 ## 版本交付怎么走
 
-- 日常:在各领域 `delivery/prd.md` 里持续加 / 改 PRD 条目(用稳定编号 `P-XXX`)
-- 发版:触发 `/deliver <version>`,AI 自动从领域 PRD 组装完整 `project/delivery/v1.x/release-prd.md`
-- release-prd 是产物,**不要手动编辑**。内容要改 → 回到领域 PRD 改 → 重新 `/deliver`
+日常维护领域 PRD,发版时让 AI 基于 git diff 自动识别变更、组装 release-prd。
+
+### 工作流
+
+1. **日常**:在各领域 `delivery/prd.md` 里持续加 / 改条目,每条用稳定编号 `P-XXX`、二级标题格式 `## P-XXX <标题>`,标题下第一行是 `**状态**:` 行(`新增@v1.x` / `修订@v1.x` / `废弃@v1.x`)。详细格式见 `product-design-kit/design/external-prd.md` 的「条目编号规范」。
+2. **发版**:`/deliver v1.1`
+   - AI 用 `git describe --tags --match 'release/v*'` 找上版 tag
+   - 对每个领域 `delivery/prd.md`,用 `git show <base>:<path>` 拿到 base 版本,按 `## P-XXX` 切分对比
+   - 识别本版的新增 / 修订 / 废弃条目,按领域聚合
+   - 把清单反向确认给你看
+3. **确认**后,AI 生成 `project/delivery/v1.1/release-prd.md` 和 `test-plan.md`,内容为完整条目摘录(自包含对外文档)
+4. **打 tag**:`git tag release/v1.1`,作为下一版的 base
+
+### 关键约束
+
+- release-prd 是**生成产物**,不要手动编辑。改动请回到领域 PRD 再重新触发 `/deliver`。
+- 废弃条目**不要删**,打 `废弃@v1.x` 标记保留;删除会让下一版 diff 失去锚点。
+- 首版发布没有上版 tag,所有现有条目都会被识别为"新增@本版"。
 
 ## 协作方式
 

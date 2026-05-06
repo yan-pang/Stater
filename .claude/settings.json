@@ -11,6 +11,8 @@
       "Bash(git tag *)",
       "Bash(git log *)",
       "Bash(git diff *)",
+      "Bash(git describe *)",
+      "Bash(git show *)",
       "Edit(/.claude/skills/build/**)",
       "Edit(/.claude/skills/status/**)",
       "Edit(/.claude/skills/review/**)",
