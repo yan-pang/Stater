@@ -75,39 +75,33 @@ const renderTemplate = (template, heading) => {
   return template.replace(/^# .*/u, `# ${heading}`)
 }
 
-const researchTemplate = readTemplate('product-design-kit/design/research-doc-template.md')
 const designTemplate = readTemplate('product-design-kit/design/design-doc-template.md')
 const prdTemplate = readTemplate('product-design-kit/design/external-prd.md')
-const testTemplate = readTemplate('product-design-kit/design/test-strategy.md')
+const testStrategyTemplate = readTemplate('product-design-kit/design/test-strategy.md')
 const testCasesTemplate = readTemplate('product-design-kit/design/test-cases.md')
 
-writeIfMissing(
-  `project/domains/${slug}/research.md`,
-  renderTemplate(researchTemplate, `${title} 研究记录`),
-)
 writeIfMissing(`project/domains/${slug}/design.md`, designTemplate)
-ensureDir(`project/domains/${slug}/tech`)
 
 if (includeDelivery) {
   writeIfMissing(`project/domains/${slug}/delivery/prd.md`, renderTemplate(prdTemplate, `${title} 对外 PRD`))
   writeIfMissing(
-    `project/domains/${slug}/delivery/test-strategy.md`,
-    renderTemplate(testTemplate, `${title} 测试策略`),
+    `project/domains/${slug}/delivery/test/strategy.md`,
+    renderTemplate(testStrategyTemplate, `${title} 测试策略`),
   )
   writeIfMissing(
-    `project/domains/${slug}/delivery/test-cases.md`,
+    `project/domains/${slug}/delivery/test/cases.md`,
     renderTemplate(testCasesTemplate, `${title} 测试用例`),
   )
 }
 
 console.log('')
-console.log('下一步：')
+console.log('下一步:')
 console.log('1. 先阅读 product-design-kit/design/design-init.md')
-console.log('2. 如项目已有品牌或视觉默认规范，先补 project/ui-brand.md')
-console.log(`3. 在 project/domains/${slug}/research.md 中整理前期规划、会议增量和交付参考`)
-console.log(`4. 如需补人写技术设计，放到 project/domains/${slug}/tech/`)
-console.log(`5. 在 project/domains/${slug}/design.md 中完成设计初始化内容`)
-console.log(`6. 直接对话说明需求或说“继续 ${slug}”，由 guide-agent 自动判断当前阶段`)
+console.log('2. 如项目已有品牌或视觉默认规范,先补 project/ui-brand.md')
+console.log(`3. 在 project/domains/${slug}/design.md 中完成设计初始化内容和详细设计`)
+console.log('4. 跨领域的调研写到 project/research/, 跨领域的研发设计写到 project/tech/')
+console.log(`5. 直接对话说明需求或说"继续 ${slug}",由 guide-agent 自动判断当前阶段`)
 if (includeDelivery) {
-  console.log('7. 需要对外交付时，再参考 external-prd.md、test-strategy.md 和 prd-checklist.md 完善 delivery 文档')
+  console.log(`6. 领域级 PRD 和测试用例持续维护在 project/domains/${slug}/delivery/`)
+  console.log('7. 发版时 release-prd 由 /deliver 自动生成到 project/delivery/v1.x/')
 }

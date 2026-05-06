@@ -6,26 +6,28 @@
 
 1. 运行 `npm install`
 2. 运行 `npm run dev`
-3. 直接告诉 Claude 你要做什么，或说“继续 `<domain>`”
-4. 如果要新建领域，运行 `npm run new:domain -- <domain-name>`
-5. 如果一开始就确定要产出交付物，再加 `--delivery`
+3. 直接告诉 Claude 你要做什么,或说"继续 `<domain>`"
+4. 如果要新建领域,运行 `npm run new:domain -- <domain-name>`
+5. 如果一开始就确定要产出交付物,再加 `--delivery`
 
 `README.md` 是唯一的人类使用入口。  
-AI 的阶段编排、读取顺序和冲突裁决统一由 `.claude/agents/guide-agent.md` 负责，不再依赖其他说明文档。
+AI 的阶段编排、读取顺序和冲突裁决统一由 `.claude/agents/guide-agent.md` 负责,不再依赖其他说明文档。
 
 ## 项目固定分层
 
 ```text
-product-design-kit/   规范库
-project/              项目状态与领域文档
-src/                  代码实现
+product-design-kit/   规范库(AI 读,回答"应该怎么做")
+project/              项目状态与领域文档(回答"当前做到哪了")
+  ui-brand.md         项目级默认设计规范
+  overview.md         项目总览与状态
+  research/           项目级调研(跨领域、按迭代版本)
+  tech/               项目级研发设计(跨领域、按迭代版本)
+  delivery/           版本级对外交付产物(v1.x/...,AI 生成不手改)
+  domains/<domain>/   业务领域长期资产
+src/                  前端代码实现
+.claude/              machine-only 总控与阶段 skills
+scripts/              本地脚手架
 ```
-
-- `product-design-kit/`：AI 读取的规范库，回答“应该怎么做”
-- `project/`：项目状态与领域文档，回答“当前做到哪了”
-- `src/`：前端代码实现
-- `.claude/`：machine-only 总控与阶段 skills
-- `scripts/`：本地脚手架
 
 ## 领域目录怎么放
 
@@ -33,41 +35,36 @@ src/                  代码实现
 project/
   domains/
     <domain>/
-      design.md
-      research.md
-      tech/
-      delivery/
-        prd.md
-        test-strategy.md
-        test-cases.md
+      design.md                 产品设计(给 AI / demo 实现)
+      delivery/                 领域长期交付资产
+        prd.md                  领域 PRD(权威源,持续演进)
+        test/
+          strategy.md
+          cases.md
 ```
 
-- `design.md`：给 AI / demo 实现看的业务与页面设计
-- `research.md`：前期规划、会议增量和交付参考工作台
-- `tech/`：人写的技术设计文档区，可放多份 `.md`
-- `delivery/`：正式交付物输出区
+业务领域只放产品设计和领域长期资产。跨领域的调研放 `project/research/`,跨领域的研发设计放 `project/tech/`。
 
-固定边界：
+## 版本交付怎么走
 
-- `design.md` 只保留会影响 AI / demo 实现的稳定设计结论
-- `tech/` 不默认同步进 `design.md`
-- 只有技术设计会改变页面、交互或 Mock 时，才需要回写 `design.md`
-- `delivery/` 默认综合参考 `research.md`、`tech/` 和 `design.md`
+- 日常:在各领域 `delivery/prd.md` 里持续加 / 改 PRD 条目(用稳定编号 `P-XXX`)
+- 发版:触发 `/deliver <version>`,AI 自动从领域 PRD 组装完整 `project/delivery/v1.x/release-prd.md`
+- release-prd 是产物,**不要手动编辑**。内容要改 → 回到领域 PRD 改 → 重新 `/deliver`
 
 ## 协作方式
 
-- 默认入口是直接对话，不需要自己判断当前该进哪个阶段
+- 默认入口是直接对话,不需要自己判断当前该进哪个阶段
 - `/guide <domain>` 只保留为兼容快捷入口
 - 项目级视觉和品牌基线统一写在 `project/ui-brand.md`
 - 当前项目状态统一写在 `project/overview.md`
 
 ## 真正需要知道的规范
 
-- 项目级设计规范：`project/ui-brand.md`
-- 设计初始化规范：`product-design-kit/design/design-init.md`
-- 详细设计规范：`product-design-kit/design/product-design.md`
-- 对外交付规范：`product-design-kit/design/external-prd.md`、`product-design-kit/design/test-strategy.md`、`product-design-kit/design/test-cases.md`
-- 交付自查清单：`product-design-kit/tools/prd-checklist.md`
+- 项目级设计规范:`project/ui-brand.md`
+- 设计初始化规范:`product-design-kit/design/design-init.md`
+- 详细设计规范:`product-design-kit/design/product-design.md`
+- 对外交付规范:`product-design-kit/design/external-prd.md`、`product-design-kit/design/test-strategy.md`、`product-design-kit/design/test-cases.md`
+- 交付自查清单:`product-design-kit/tools/prd-checklist.md`
 
 ## 常用命令
 
@@ -78,7 +75,7 @@ npm run check
 
 ## 当前状态入口
 
-- 项目总览：`project/overview.md`
-- 项目级视觉规范：`project/ui-brand.md`
+- 项目总览:`project/overview.md`
+- 项目级视觉规范:`project/ui-brand.md`
 
-`/catalog` 只保留为通用列表页业务示例，用来演示 starter 当前的页面骨架，不再承担流程说明职责。
+`/catalog` 只保留为通用列表页业务示例,用来演示 starter 当前的页面骨架,不再承担流程说明职责。

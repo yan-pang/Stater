@@ -1,7 +1,8 @@
 # 研究记录
 
+> 默认保存为 `project/research/<version>-<topic>.md`(项目级调研,按迭代版本命名)。  
 > 这是一份交付参考工作台,用于整理前期规划、会议增量和交付参考。  
-> `design.md` 继续服务 AI / demo 实现;如果页面结构、交互或 Mock 方案变化,直接更新 `design.md`。  
+> `design.md` 继续服务 AI / demo 实现;如果页面结构、交互或 Mock 方案变化,直接更新对应领域 `design.md`。  
 > 这里不沉淀完整会议纪要或研发交付文档,只保留来源和对 PRD / 测试有用的提炼结果。
 
 ## 材料清单
@@ -46,8 +47,8 @@
 > 提炼阶段用它反推 `delivery/*` 还缺什么,进入 `deliver` 阶段前做最后核对。
 
 - 需要补 `delivery/prd.md`:
-- 需要补 `delivery/test-strategy.md`:
-- 需要补 `delivery/test-cases.md`:
+- 需要补 `delivery/test/strategy.md`:
+- 需要补 `delivery/test/cases.md`:
 
 ## 增量更新记录
 

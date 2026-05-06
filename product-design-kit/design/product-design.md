@@ -9,7 +9,7 @@
 - 多模块关系、共享规则、页面设计和复杂交互都直接写在同一份 `design.md` 中，不再额外拆独立设计文档。
 - `project/ui-brand.md` 负责项目级默认设计规范，例如品牌色、字体层级、圆角、阴影、间距密度、组件气质和禁用样式。
 - `design.md` 默认继承 `project/ui-brand.md`；只有领域特有的设计例外才写回 `design.md`。
-- `research.md` 用于沉淀材料来源、会议增量、交付参考和待确认问题，不替代详细设计正文。
+- `project/research/` 用于沉淀跨领域的材料来源、会议增量、交付参考和待确认问题(按迭代版本组织),不替代详细设计正文。业务领域下不再单独维护 `research.md`。
 
 ## 核心设计原则
 
@@ -62,7 +62,7 @@
 
 - 不要重复 `project/ui-brand.md` 中已经稳定的项目级视觉规则。
 - 不要把原始会议纪要、聊天记录或需求原文大段堆进正文。
-- 不要把 `tech/` 中的人写技术设计正文整体搬进来；只有会影响 demo 表现的稳定结论才回写。
+- 不要把 `project/tech/` 中的研发技术设计正文整体搬进来;只有会影响 demo 表现的稳定结论才回写。
 - 不要把纯交付口径、测试素材或待确认材料直接写成详细设计正文。
 - 不要只列一堆字段或按钮，而不解释它们的目标、触发条件和系统反馈。
 
@@ -316,8 +316,11 @@ handleTabChange -> 更新当前子页 -> 保留必要上下文
 
 ## 文档关系
 
-- `project/ui-brand.md`：项目级默认设计规范，负责长期稳定的品牌与视觉规则。
-- `project/domains/<domain>/design.md`：领域主设计文档，负责业务设计、页面设计、交互设计和例外说明。
-- `product-design-kit/design/design-init.md`：负责 `design.md` 的初始化阶段。
-- `project/domains/<domain>/research.md`：负责材料来源、会议增量、交付参考和待确认问题。
-- `project/overview.md`：负责维护跨领域状态、共享概念、跨领域约定和公共能力。
+- `project/ui-brand.md`:项目级默认设计规范,负责长期稳定的品牌与视觉规则。
+- `project/domains/<domain>/design.md`:领域主设计文档,负责业务设计、页面设计、交互设计和例外说明。
+- `product-design-kit/design/design-init.md`:负责 `design.md` 的初始化阶段。
+- `project/research/`:项目级调研工作台,按迭代版本组织,承接跨领域的材料来源、会议增量、交付参考和待确认问题。
+- `project/tech/`:项目级研发技术设计,按迭代版本组织。
+- `project/domains/<domain>/delivery/prd.md`:领域长期 PRD(权威源,持续演进)。
+- `project/delivery/v1.x/`:版本级对外交付产物,由 `/deliver` 从领域 PRD 组装。
+- `project/overview.md`:负责维护跨领域状态、共享概念、跨领域约定和公共能力。

@@ -9,14 +9,16 @@
 3. 需求 / 规则编号一旦进入 `project/domains/<domain>/delivery/prd.md`，后续测试策略和测试用例都沿用同一套编号；如果某条编号也出现在 `design.md`，两边保持一致。
 4. 如果页面结构或关键流程改了，先更新 `project/domains/<domain>/design.md`，再改代码。
 5. 如果新增共享组件、共享规则或公共约定，必须同步 `project/overview.md`。
-6. 交付文档以 `design.md`、`research.md` 和 `tech/` 中已经确认的内容为参考整理，不允许相互矛盾。
+6. 交付文档以 `design.md`、`project/research/` 和 `project/tech/` 中已经确认的内容为参考整理,不允许相互矛盾。
 
 ## 命名建议
 
-- 领域目录：`project/domains/<domain-slug>/`
-- 项目级设计规范：`project/ui-brand.md`
-- 技术设计目录：`project/domains/<domain-slug>/tech/`
-- 交付目录：`project/domains/<domain-slug>/delivery/`
+- 领域目录:`project/domains/<domain-slug>/`
+- 项目级设计规范:`project/ui-brand.md`
+- 项目级调研目录:`project/research/`
+- 项目级研发设计目录:`project/tech/`
+- 版本级对外交付目录:`project/delivery/v1.x/`
+- 领域长期交付目录:`project/domains/<domain-slug>/delivery/`
 - 页面、路由、Mock 和设计文档中的术语保持同一中文叫法
 
 ## 修改顺序

@@ -10,7 +10,12 @@
       "Bash(git branch *)",
       "Bash(git tag *)",
       "Bash(git log *)",
-      "Bash(git diff *)"
+      "Bash(git diff *)",
+      "Edit(/.claude/skills/build/**)",
+      "Edit(/.claude/skills/status/**)",
+      "Edit(/.claude/skills/review/**)",
+      "Edit(/.claude/skills/deliver/**)",
+      "Bash(git commit -m ' *)"
     ]
   }
 }

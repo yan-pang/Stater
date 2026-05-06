@@ -1,14 +1,14 @@
 # 测试策略与用例规范
 
-> 默认保存为 `project/domains/<domain>/delivery/test-strategy.md`。  
-> 与 `test-cases.md` 配套使用，先写策略，再写详细用例。  
-> 目标读者通常包括 QA、开发和业务协作方，重点是验证业务逻辑、规则语义和结果可追溯性。
+> 默认保存为 `project/domains/<domain>/delivery/test/strategy.md`。  
+> 与 `test/cases.md` 配套使用,先写策略,再写详细用例。  
+> 目标读者通常包括 QA、开发和业务协作方,重点是验证业务逻辑、规则语义和结果可追溯性。
 
 ## 当前模板适配说明
 
-- 当前仓库是前端 demo 模板，但测试策略仍需围绕业务逻辑、规则、状态和交付质量来设计，而不是只写页面点点点。
-- 测试策略默认从 `delivery/prd.md`、`research.md`、`tech/` 和相关设计文档中提炼，需求 / 规则编号以 `delivery/prd.md` 为主。
-- `test-strategy.md` 负责回答“测什么、怎么分、为什么这样分是完整的”；`test-cases.md` 负责回答“具体怎么测”。
+- 当前仓库是前端 demo 模板,但测试策略仍需围绕业务逻辑、规则、状态和交付质量来设计,而不是只写页面点点点。
+- 测试策略默认从领域 `delivery/prd.md`、`project/research/` 相关版本文件、`project/tech/` 相关版本文件和设计文档中提炼,需求 / 规则编号以领域 `delivery/prd.md` 的 `P-XXX` 为主。
+- `test/strategy.md` 负责回答"测什么、怎么分、为什么这样分是完整的";`test/cases.md` 负责回答"具体怎么测"。
 
 ## 核心原则
 
@@ -24,7 +24,7 @@
 - 测试视角：功能黑盒 / 规则黑盒 / 兼顾弱 UI
 - 主动排除项：
 - 参考材料：
-- 如领域存在 `tech/`，优先吸收其中的依赖、接口约束、异常路径、兼容性和数据边界。
+- 如 `project/tech/` 下有相关版本文件,优先吸收其中的依赖、接口约束、异常路径、兼容性和数据边界。
 
 ## 测试目标
 
@@ -208,4 +208,4 @@
 - 关键需求 / 规则是否已覆盖
 - 高优先级问题是否已关闭或明确记录风险
 - 回归集合是否已整理
-- `test-strategy.md` 与 `test-cases.md` 是否可互相回溯
+- `test/strategy.md` 与 `test/cases.md` 是否可互相回溯
