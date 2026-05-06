@@ -18,5 +18,5 @@ argument-hint: [scope]
    - 需要对外交付的参考点是否已经从 `research.md` 和 `tech/` 提炼进 `delivery/*`
    - 新增材料出现后，是否错误地把仅交付参考的问题当成 `design` / `build` 阻塞，或反过来漏掉了该走 `breakdown` 的整理
 5. 代码评审时，指出具体文件和具体行为，并尽量关联到 `design.md` 或 `project/ui-brand.md`。
-6. 模板评审时，确认 `README.md`、`.claude/agents/guide-agent.md`、`project/ui-brand.md`、`project/overview.md`、`product-design-kit/design/design-init.md`、`product-design-kit/design/product-design.md`、`product-design-kit/design/external-prd.md`、`product-design-kit/design/test-strategy.md`、`product-design-kit/design/test-cases.md`、`.claude/skills/` 和 `.cursor/rules/` 是否仍然只指向同一套事实来源。
+6. 模板评审时，确认 `README.md`、`.claude/agents/guide-agent.md`、`project/ui-brand.md`、`project/overview.md`、`product-design-kit/design/design-init.md`、`product-design-kit/design/product-design.md`、`product-design-kit/design/external-prd.md`、`product-design-kit/design/test-strategy.md`、`product-design-kit/design/test-cases.md` 和 `.claude/skills/` 是否仍然只指向同一套事实来源。
 7. 如果没有发现，明确写出“未发现问题”，并补充残余风险或尚未验证项。
