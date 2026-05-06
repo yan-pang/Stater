@@ -9,12 +9,7 @@
 - 技术栈:React + Vite + Ant Design + 本地 Mock
 - 数据策略:本地 Mock
 - 当前阶段:模板整理
-
-## 项目目标
-
-- 保留一套长期稳定的规范库
-- 通过默认直接对话的 `guide-agent` 推进领域级流水线
-- 用最小示例页演示当前 starter 的通用页面骨架
+- 项目目标:保留一套长期稳定的规范库 + 通过默认直接对话的 `guide-agent` 推进领域级流水线 + 用最小示例页演示 starter 骨架
 
 ## 领域清单
 
@@ -22,32 +17,16 @@
 | --- | --- | --- | --- | --- | --- | --- |
 | 暂无 | - | - | - | - | - | 直接描述需求或说"继续 `<domain>`"即可开始 |
 
-## 项目级内容入口
+## 项目级约定
 
 | 内容类型 | 位置 | 组织方式 |
 | --- | --- | --- |
+| 项目级视觉规范 | `project/ui-brand.md` | 长期稳定 |
 | 项目级调研 | `project/research/` | 按版本命名,如 `v1.0-market-scan.md` |
 | 项目级研发设计 | `project/tech/` | 按版本命名,如 `v1.0-architecture.md` |
 | 版本对外交付 | `project/delivery/v1.x/` | 每版一个子目录,`release-prd.md` 由 AI 生成 |
-| 项目级视觉规范 | `project/ui-brand.md` | 长期稳定 |
-
-## 共享概念
-
-| 概念 | 说明 | 是否跨领域 |
-| --- | --- | --- |
-| 领域 | 项目推进的主单位,对应 `project/domains/<domain>/` | 是 |
-| 模块 | 领域下的页面或功能单元,统一在 `design.md` 中组织 | 是 |
-
-## 跨领域约定
-
-- 主存放方式:业务文档按领域组织,跨领域内容按项目级目录组织
-- 项目级设计规范:`project/ui-brand.md`
-- 业务领域必有项:`design.md`(产品设计)
-- 业务领域按需:`delivery/`(领域长期 PRD 和测试用例)
-- 项目级调研:`project/research/`,按迭代版本
-- 项目级研发设计:`project/tech/`,按迭代版本
-- 版本化对外交付:`project/delivery/v1.x/`,AI 从领域 PRD 组装
-- 规范来源:`product-design-kit/`
+| 规范来源 | `product-design-kit/` | 只读 |
+| 领域资产 | `project/domains/<domain>/` | 长期 PRD 和测试用例累积 |
 
 ## 公共能力
 
